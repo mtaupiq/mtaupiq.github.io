@@ -1,11 +1,345 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="en" class="scroll-smooth">
+  <head>
     <meta charset="UTF-8">
-    <title>My First GitHub Page</title>
-</head>
-<body>
-    <h1>Hello, World!</h1>
-    <p>Welcome to my brand new GitHub Pages website.</p>
-</body>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muhammad Taupiq | Backend & Full-Stack Developer</title>
+    
+    <!-- Theme Check Script (Prevents flash of wrong theme on page load) -->
+    <script>
+      if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+    </script>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Custom Theme Configuration -->
+    <script>
+      tailwind.config = {
+        darkMode: 'class', // Enables dark mode toggling via a CSS class
+        theme: {
+          extend: {
+            colors: {
+              brandRed: '#AB1509',
+              brandYellow: '#FFF7D3',
+            }
+          }
+        }
+      }
+    </script>
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- AOS Animation CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Lora:ital,wght@0,500;0,600;0,700;1,500&display=swap');
+      
+      body { font-family: 'Inter', sans-serif; }
+      h1, h2, h3, h4, h5, h6, .font-bold { font-family: 'Lora', serif; }
+    </style>
+  </head>
+  <body class="bg-brandYellow dark:bg-gray-950 text-gray-900 dark:text-gray-100 antialiased selection:bg-brandRed selection:text-brandYellow overflow-x-hidden transition-colors duration-300">
+    
+    <!-- Navbar -->
+    <nav class="sticky top-0 z-50 bg-brandYellow/80 dark:bg-gray-950/80 backdrop-blur-md border-b border-brandRed/20 dark:border-gray-800 transition-colors duration-300">
+      <div class="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
+        <a href="#" class="text-xl font-bold tracking-tight text-brandRed dark:text-brandYellow">mtaupiq<span class="text-gray-900 dark:text-white">.github.io</span></a>
+        
+        <div class="flex items-center">
+          <!-- Desktop Menu -->
+          <div class="hidden md:flex space-x-8 text-sm font-medium text-gray-700 dark:text-gray-400 mr-8">
+            <a href="#about" class="hover:text-brandRed transition">About</a>
+            <a href="#skills" class="hover:text-brandRed transition">Skills</a>
+            <a href="#experience" class="hover:text-brandRed transition">Experience</a>
+            <a href="#projects" class="hover:text-brandRed transition">Projects</a>
+            <a href="#contact" class="hover:text-brandRed transition">Contact</a>
+          </div>
+
+          <!-- Theme Toggle Button -->
+          <button id="theme-toggle" class="text-gray-700 dark:text-gray-400 hover:text-brandRed dark:hover:text-brandYellow focus:outline-none transition mr-4 md:mr-0">
+            <i id="theme-icon" class="fa-solid fa-moon text-xl"></i>
+          </button>
+
+          <!-- Mobile Menu Button -->
+          <button id="mobile-menu-btn" class="md:hidden text-gray-700 dark:text-gray-400 hover:text-brandRed focus:outline-none transition">
+            <i class="fa-solid fa-bars text-2xl"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile Dropdown Menu -->
+      <div id="mobile-menu" class="hidden md:hidden bg-brandYellow/95 dark:bg-gray-900/95 backdrop-blur-md border-b border-brandRed/20 dark:border-gray-800">
+        <div class="flex flex-col px-6 py-4 space-y-4 text-sm font-medium text-gray-700 dark:text-gray-400">
+          <a href="#about" class="mobile-link hover:text-brandRed transition">About</a>
+          <a href="#skills" class="mobile-link hover:text-brandRed transition">Skills</a>
+          <a href="#experience" class="mobile-link hover:text-brandRed transition">Experience</a>
+          <a href="#projects" class="mobile-link hover:text-brandRed transition">Projects</a>
+          <a href="#contact" class="mobile-link hover:text-brandRed transition">Contact</a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="max-w-5xl mx-auto px-6 pt-24 pb-16 md:pt-32 md:pb-24 flex flex-col justify-center min-h-[85vh]">
+      <p class="text-brandRed font-mono text-sm mb-3 tracking-wider font-semibold" data-aos="fade-up">Hi, my name is</p>
+      <h1 class="text-4xl md:text-6xl font-bold text-brandRed dark:text-brandYellow tracking-tight mb-4" data-aos="fade-up" data-aos-delay="100">Muhammad Taupiq.</h1>
+      <h2 class="text-3xl md:text-5xl font-bold text-gray-900 dark:text-gray-400 tracking-tight mb-6" data-aos="fade-up" data-aos-delay="200">I build scalable backend systems and full-stack web apps.</h2>
+      <p class="text-gray-700 dark:text-gray-400 max-w-xl text-lg mb-8 leading-relaxed" data-aos="fade-up" data-aos-delay="300"> I am a professional software engineer specializing in designing robust backend architectures, building high-performance APIs, and developing end-to-end full-stack platforms. </p>
+      <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4" data-aos="fade-up" data-aos-delay="400">
+        <a href="#projects" class="px-6 py-3 bg-brandRed hover:bg-red-800 text-brandYellow font-medium rounded-lg transition text-center shadow-lg shadow-brandRed/20">View My Work</a>
+        <a href="#contact" class="px-6 py-3 bg-transparent dark:bg-gray-900 border-2 border-brandRed dark:border-gray-700 text-brandRed dark:text-brandYellow hover:bg-brandRed hover:text-brandYellow dark:hover:text-brandRed dark:hover:border-brandRed font-medium rounded-lg transition text-center">Get In Touch</a>
+      </div>
+    </section>
+
+    <hr class="border-brandRed/20 dark:border-gray-900 max-w-5xl mx-auto px-6 transition-colors duration-300">
+
+    <!-- About Section -->
+    <section id="about" class="max-w-5xl mx-auto px-6 py-20 overflow-hidden">
+      <h3 class="text-2xl font-bold text-brandRed dark:text-brandYellow mb-8 flex items-center" data-aos="fade-right">
+        <span class="text-brandRed/60 dark:text-brandRed font-mono text-xl mr-2">01.</span> About Me
+      </h3>
+      <div class="grid md:grid-cols-3 gap-12">
+        <div class="md:col-span-2 text-gray-700 dark:text-gray-400 space-y-4 leading-relaxed" data-aos="fade-up">
+          <p> Hello! I'm a software development professional dedicated to crafting clean, maintainable, and highly efficient code. While I have deep roots in backend engineering and database optimization, my expertise spans comprehensive full-stack development, allowing me to build complete, end-to-end applications. </p>
+          <p> Whether architecting dynamic server environments or designing lightweight, lightning-fast client interfaces, I focus on system reliability, secure, and fluid user experiences across the entire stack. </p>
+        </div>
+        <div class="relative group max-w-[240px] mx-auto md:mx-0 w-full" data-aos="fade-left" data-aos-delay="200">
+          <div class="absolute inset-0 border-2 border-brandRed rounded-xl translate-x-4 translate-y-4 group-hover:translate-x-2 group-hover:translate-y-2 transition-transform duration-300"></div>
+          <div class="bg-white/50 dark:bg-gray-800 backdrop-blur-sm h-60 w-full rounded-xl overflow-hidden relative flex items-center justify-center border border-brandRed/30 dark:border-gray-700 shadow-sm transition-colors duration-300">
+            <i class="fa-solid fa-code text-5xl text-brandRed/70 dark:text-gray-600 group-hover:text-brandRed transition duration-300"></i>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="bg-brandRed/5 dark:bg-gray-900/40 border-y border-brandRed/10 dark:border-gray-900 py-20 transition-colors duration-300">
+      <div class="max-w-5xl mx-auto px-6">
+        <h3 class="text-2xl font-bold text-brandRed dark:text-brandYellow mb-10 flex items-center" data-aos="fade-right">
+          <span class="text-brandRed/60 dark:text-brandRed font-mono text-xl mr-2">02.</span> Technical Skills
+        </h3>
+        <div class="grid md:grid-cols-2 gap-8">
+          <div data-aos="fade-up" data-aos-delay="0">
+            <h4 class="text-gray-900 dark:text-brandYellow font-bold mb-4 border-b border-brandRed/30 dark:border-brandRed/50 pb-2 transition-colors duration-300">Languages</h4>
+            <p class="text-gray-700 dark:text-gray-300 text-sm leading-relaxed">PHP, C# (.NET), Go, JavaScript, TypeScript, SQL (PL/SQL)</p>
+          </div>
+          <div data-aos="fade-up" data-aos-delay="100">
+            <h4 class="text-gray-900 dark:text-brandYellow font-bold mb-4 border-b border-brandRed/30 dark:border-brandRed/50 pb-2 transition-colors duration-300">Frameworks & Libraries</h4>
+            <p class="text-gray-700 dark:text-gray-300 text-sm leading-relaxed">NestJS, Node.js, .NET Core / .NET Framework, Laravel, Lumen, Next.js, Svelte, SvelteKit, Vue.js, AngularJS, CakePHP, CodeIgniter</p>
+          </div>
+          <div data-aos="fade-up" data-aos-delay="200">
+            <h4 class="text-gray-900 dark:text-brandYellow font-bold mb-4 border-b border-brandRed/30 dark:border-brandRed/50 pb-2 transition-colors duration-300">DevOps & Tools</h4>
+            <p class="text-gray-700 dark:text-gray-300 text-sm leading-relaxed">Docker, Redis, Git, Azure (Azure Service Bus)</p>
+          </div>
+          <div data-aos="fade-up" data-aos-delay="300">
+            <h4 class="text-gray-900 dark:text-brandYellow font-bold mb-4 border-b border-brandRed/30 dark:border-brandRed/50 pb-2 transition-colors duration-300">Databases</h4>
+            <p class="text-gray-700 dark:text-gray-300 text-sm leading-relaxed">Oracle Database, PostgreSQL, MySQL, MSSQL</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="max-w-5xl mx-auto px-6 py-20">
+      <h3 class="text-2xl font-bold text-brandRed dark:text-brandYellow mb-12 flex items-center" data-aos="fade-right">
+        <span class="text-brandRed/60 dark:text-brandRed font-mono text-xl mr-2">03.</span> Work Experience
+      </h3>
+      <div class="space-y-12 border-l border-brandRed/40 dark:border-brandRed/50 pl-6 md:pl-8 ml-2 transition-colors duration-300">
+        <!-- SERA -->
+        <div class="relative" data-aos="fade-up">
+          <div class="absolute -left-[33px] md:-left-[41px] top-1.5 h-4 w-4 rounded-full bg-brandYellow dark:bg-gray-950 border-2 border-brandRed"></div>
+          <h4 class="text-xl font-bold text-gray-900 dark:text-brandYellow">PT. Serasi Autoraya (SERA)</h4>
+          <div class="flex flex-col md:flex-row md:justify-between md:items-center text-sm text-gray-700 dark:text-gray-400 mb-4 mt-1">
+            <span class="text-brandRed font-semibold">Back End Developer (Team TRACtoGo)</span>
+            <span class="font-mono mt-1 md:mt-0 text-gray-600 dark:text-brandYellow/80">Juni 2022 - Juni 2026</span>
+          </div>
+          <ul class="list-disc list-outside ml-4 text-gray-700 dark:text-gray-400 space-y-2 text-sm leading-relaxed">
+            <li>Architected, developed, and optimized high-performance backend microservices using NestJS, Laravel, and Lumen to power the TRACtoGo platform, successfully supporting large-scale B2C and B2B car and bus rental transactions.</li>
+            <li>Engineered complex corporate fleet management and booking logic, streamlining multi-vehicle reservation workflows and corporate account management systems to significantly improve development velocity and operational efficiency.</li>
+            <li>Designed and implemented secure, reliable RESTful APIs and event-driven communication channels utilizing Azure Service Bus to enable seamless communication between microservices, ensuring high availability and fault tolerance.</li>
+            <li>Enhanced overall system reliability, reduced API response latency, and maintained comprehensive unit/ integration test suites to ensure high availability during peak rental traffic.</li>
+            <li>Mentored junior developers and interns, established backend coding standards/documentation, and collaborated using Docker and automated CI/CD pipelines to ensure rapid, high-quality feature deployment.</li>
+          </ul>
+        </div>
+        <!-- Bebas Jam Kerja -->
+        <div class="relative" data-aos="fade-up">
+          <div class="absolute -left-[33px] md:-left-[41px] top-1.5 h-4 w-4 rounded-full bg-brandYellow dark:bg-gray-950 border-2 border-brandRed"></div>
+          <h4 class="text-xl font-bold text-gray-900 dark:text-brandYellow">Bebas Jam Kerja</h4>
+          <div class="flex flex-col md:flex-row md:justify-between md:items-center text-sm text-gray-700 dark:text-gray-400 mb-4 mt-1">
+            <span class="text-brandRed font-semibold">Frontend Developer (Freelance)</span>
+            <span class="font-mono mt-1 md:mt-0 text-gray-600 dark:text-brandYellow/80">Februari 2023 - Maret 2023</span>
+          </div>
+          <ul class="list-disc list-outside ml-4 text-gray-700 dark:text-gray-400 space-y-2 text-sm leading-relaxed">
+            <li>Developed client-side features and integrated robust API endpoints to ensure seamless data flow and optimal business logic execution.</li>
+            <li>Utilized JavaScript and modern web development best practices to build responsive, user-friendly interfaces that delivered high-quality web applications within tight project timelines.</li>
+          </ul>
+        </div>
+        <!-- Kominfo -->
+        <div class="relative" data-aos="fade-up">
+          <div class="absolute -left-[33px] md:-left-[41px] top-1.5 h-4 w-4 rounded-full bg-brandYellow dark:bg-gray-950 border-2 border-brandRed"></div>
+          <h4 class="text-xl font-bold text-gray-900 dark:text-brandYellow">Kementerian Komunikasi dan Informatika RI</h4>
+          <div class="flex flex-col md:flex-row md:justify-between md:items-center text-sm text-gray-700 dark:text-gray-400 mb-4 mt-1">
+            <span class="text-brandRed font-semibold">Full Stack / Web Developer</span>
+            <span class="font-mono mt-1 md:mt-0 text-gray-600 dark:text-brandYellow/80">Oktober 2021 - Desember 2022</span>
+          </div>
+          <ul class="list-disc list-outside ml-4 text-gray-700 dark:text-gray-400 space-y-2 text-sm leading-relaxed">
+            <li>Contributed to the development and enhancement of the PSE (Penyelenggara Sistem Elektronik) nation-wide application using Laravel and Vue.js, ensuring robust compliance and system security.</li>
+            <li>Led architectural engineering for the Redkar (Relawan Pemadam Kebakaran) platform using Next.js to provide a highly responsive and high-performance user experience.</li>
+            <li>Developed and executed major structural updates for the national P2DD website using a Laravel Fullstack architecture to optimize data accessibility and performance.</li>
+            <li>Maintained and modernized the legacy SIP2DD web application utilizing CakePHP and AngularJS, improving overall code maintainability and user experience.</li>
+            <li>Optimized relational database performance and query response times through the strategic writing and indexing of complex PostgreSQL queries.</li>
+            <li>Collaborated with government stakeholders to translate regulatory and compliance frameworks into functional, high-security technical requirements.</li>
+          </ul>
+        </div>
+        <!-- MNC Sky Vision -->
+        <div class="relative" data-aos="fade-up">
+          <div class="absolute -left-[33px] md:-left-[41px] top-1.5 h-4 w-4 rounded-full bg-brandYellow dark:bg-gray-950 border-2 border-brandRed"></div>
+          <h4 class="text-xl font-bold text-gray-900 dark:text-brandYellow">PT. MNC Sky Vision</h4>
+          <div class="flex flex-col md:flex-row md:justify-between md:items-center text-sm text-gray-700 dark:text-gray-400 mb-4 mt-1">
+            <span class="text-brandRed font-semibold">Web Programmer</span>
+            <span class="font-mono mt-1 md:mt-0 text-gray-600 dark:text-brandYellow/80">Februari 2018 - Juni 2022</span>
+          </div>
+          <ul class="list-disc list-outside ml-4 text-gray-700 dark:text-gray-400 space-y-2 text-sm leading-relaxed">
+            <li>Designed, developed, and maintained core APIs using .NET to enhance enterprise system scalability, integration, and performance.</li>
+            <li>Managed full development lifecycle for web applications using CodeIgniter and expanded functionality for web services.</li>
+            <li>Designed and implemented RESTful APIs for increased system scalability and seamless business integration.</li>
+            <li>Developed front-end interfaces using HTML/CSS and AngularJS.</li>
+            <li>Performed advanced database management and optimization by developing complex Oracle PL/SQL stored procedures, functions, and triggers alongside MySQL management to maximize data reliability.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="bg-brandRed/5 dark:bg-gray-900/40 border-y border-brandRed/10 dark:border-gray-900 py-20 overflow-hidden transition-colors duration-300">
+      <div class="max-w-5xl mx-auto px-6">
+        <h3 class="text-2xl font-bold text-brandRed dark:text-brandYellow mb-12 flex items-center" data-aos="fade-right">
+          <span class="text-brandRed/60 dark:text-brandRed font-mono text-xl mr-2">04.</span> Featured Projects
+        </h3>
+        <div class="grid md:grid-cols-2 gap-8">
+          <!-- Project 1 -->
+          <div class="bg-white/40 dark:bg-gray-900/40 border border-brandRed/20 dark:border-gray-800 hover:border-brandRed dark:hover:border-brandRed/50 hover:shadow-md dark:hover:shadow-none p-6 rounded-2xl transition group flex flex-col justify-between h-full" data-aos="fade-up" data-aos-delay="0">
+            <div>
+              <div class="flex justify-between items-start mb-6">
+                <i class="fa-regular fa-folder text-3xl text-brandRed dark:group-hover:text-brandYellow transition duration-300"></i>
+                <div class="flex space-x-4 text-gray-700 dark:text-gray-400 text-lg">
+                  <a href="https://pilihkado.id" target="_blank" class="hover:text-brandRed dark:hover:text-brandYellow transition">
+                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                  </a>
+                </div>
+              </div>
+              <h4 class="text-xl font-bold text-gray-900 dark:text-brandYellow mb-2 group-hover:text-brandRed transition">PilihKado.id</h4>
+              <p class="text-gray-700 dark:text-gray-400 text-sm leading-relaxed mb-6"> A universal gift registry platform tailored for the Indonesian market. Built with high-performance APIs and integrated seamlessly with complex affiliate monetization frameworks. </p>
+            </div>
+            <div class="flex flex-wrap gap-2 text-xs font-mono font-semibold text-brandRed/80 dark:text-gray-500 dark:group-hover:text-brandYellow/60 transition duration-300">
+              <span>Go</span>
+              <span>Svelte</span>
+              <span>Affiliate APIs</span>
+              <span>Docker</span>
+            </div>
+          </div>
+          <!-- Project 2 -->
+          <div class="bg-white/40 dark:bg-gray-900/40 border border-brandRed/20 dark:border-gray-800 hover:border-brandRed dark:hover:border-brandRed/50 hover:shadow-md dark:hover:shadow-none p-6 rounded-2xl transition group flex flex-col justify-between h-full" data-aos="fade-up" data-aos-delay="200">
+            <div>
+              <div class="flex justify-between items-start mb-6">
+                <i class="fa-regular fa-folder text-3xl text-brandRed dark:group-hover:text-brandYellow transition duration-300"></i>
+                <div class="flex space-x-4 text-gray-700 dark:text-gray-400 text-lg">
+                  <i class="fa-solid fa-lock text-sm text-gray-500 self-center"></i>
+                </div>
+              </div>
+              <h4 class="text-xl font-bold text-gray-900 dark:text-brandYellow mb-2 group-hover:text-brandRed transition">Kerabat</h4>
+              <p class="text-gray-700 dark:text-gray-400 text-sm leading-relaxed mb-6"> An internal family administration and financial tracking ecosystem (Keuangan Keluarga Hebat). Designed around privacy, robust ledger calculations, and strict client-side responsiveness. </p>
+            </div>
+            <div class="flex flex-wrap gap-2 text-xs font-mono font-semibold text-brandRed/80 dark:text-gray-500 dark:group-hover:text-brandYellow/60 transition duration-300">
+              <span>Go</span>
+              <span>SvelteKit</span>
+              <span>PostgreSQL</span>
+              <span>Tailwind</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="max-w-2xl mx-auto px-6 py-24 text-center">
+      <div data-aos="zoom-in">
+        <p class="text-gray-600 dark:text-brandRed font-mono text-sm mb-3 tracking-wider font-semibold">05. What's Next?</p>
+        <h3 class="text-3xl md:text-4xl font-bold text-brandRed dark:text-brandYellow mb-4">Get In Touch</h3>
+        <p class="text-gray-700 dark:text-gray-400 mb-8 leading-relaxed"> I'm always open to discussing new system integrations, technical architectures, backend engineering positions, or interesting platform collaborations. Shoot me an email! </p>
+        <a href="mailto:taupiq.muhammad@gmail.com" class="inline-block px-8 py-3.5 bg-transparent border-2 border-brandRed text-brandRed font-medium rounded-lg hover:bg-brandRed hover:text-brandYellow dark:hover:bg-brandRed/10 dark:hover:text-brandRed transition duration-200"> Say Hello </a>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="border-t border-brandRed/20 dark:border-gray-900 bg-brandYellow/50 dark:bg-gray-950 text-center py-8 text-xs font-mono text-gray-600 dark:text-gray-500 transition-colors duration-300">
+      <div class="flex justify-center space-x-6 mb-4 text-sm text-gray-700 dark:text-gray-400">
+        <a href="https://github.com/mtaupiq" target="_blank" class="hover:text-brandRed transition">
+          <i class="fa-brands fa-github text-lg"></i>
+        </a>
+        <a href="#" class="hover:text-brandRed transition">
+          <i class="fa-brands fa-linkedin-in text-lg"></i>
+        </a>
+      </div>
+      <p>&copy; 2026 Muhammad Taupiq. Built with speed and care.</p>
+    </footer>
+
+    <!-- AOS Animation JS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      // Initialize Animations
+      AOS.init({
+        duration: 800,
+        easing: 'ease-in-out',
+        once: true,
+        offset: 50,
+      });
+
+      // Mobile Menu Toggle Logic
+      const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+      const mobileMenu = document.getElementById('mobile-menu');
+      const mobileLinks = document.querySelectorAll('.mobile-link');
+
+      mobileMenuBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+      });
+
+      mobileLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          mobileMenu.classList.add('hidden');
+        });
+      });
+
+      // Dark Mode Toggle Logic
+      const themeToggleBtn = document.getElementById('theme-toggle');
+      const themeIcon = document.getElementById('theme-icon');
+      const htmlElement = document.documentElement;
+
+      // Update Icon based on initial load
+      if (htmlElement.classList.contains('dark')) {
+        themeIcon.classList.remove('fa-moon');
+        themeIcon.classList.add('fa-sun');
+      }
+
+      // Handle Click Event
+      themeToggleBtn.addEventListener('click', () => {
+        htmlElement.classList.toggle('dark');
+        
+        if (htmlElement.classList.contains('dark')) {
+          localStorage.setItem('theme', 'dark');
+          themeIcon.classList.remove('fa-moon');
+          themeIcon.classList.add('fa-sun');
+        } else {
+          localStorage.setItem('theme', 'light');
+          themeIcon.classList.remove('fa-sun');
+          themeIcon.classList.add('fa-moon');
+        }
+      });
+    </script>
+  </body>
 </html>
